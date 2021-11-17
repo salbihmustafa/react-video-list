@@ -12,7 +12,6 @@ class SearchBar extends React.Component {
 
     // TODO: Make sure we call callback from parent component
     this.props.onFormSubmitHandler(this.state.searchTerm); //goes to parent App.js
-    this.setState({ searchTerm: "" }); //reset the search bar
   }
 
   render() {
