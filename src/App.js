@@ -4,7 +4,7 @@ import VideoList from "./components/VideoList";
 import youtube from "./apis/youtube";
 
 class App extends React.Component {
-  state = { videoList: [] };
+  state = { videoList: [], selectedVideo: null };
 
   onSearchSubmit = async (searchTerm) => {
     //to check if calls are working, inspect -> network -> fetch/xhr -> clear
@@ -15,13 +15,22 @@ class App extends React.Component {
       },
     });
 
-    this.setState({ videoList: response.data.items});
+    this.setState({ videoList: response.data.items });
   };
+
+  onVideoSelect = (video) => {
+    //callback
+    this.setState({selectedVideo: video});
+  };
+
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmitHandler={this.onSearchSubmit} />
-        <VideoList videos={this.state.videoList} />
+        <VideoList
+          onVideoSelect={this.onVideoSelect}
+          videos={this.state.videoList}
+        />
       </div>
     );
   }
