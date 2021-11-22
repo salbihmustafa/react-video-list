@@ -1,3 +1,4 @@
+import "./App.css";
 import React from "react";
 import youtube from "./apis/youtube";
 import SearchBar from "./components/SearchBar";
@@ -6,6 +7,10 @@ import VideoDetail from "./components/VideoDetail";
 
 class App extends React.Component {
   state = { videoList: [], selectedVideo: null };
+
+  componentDidMount() {
+    this.onSearchSubmit('ReactJS');
+  }
 
   onSearchSubmit = async (searchTerm) => {
     //to check if calls are working, inspect -> network -> fetch/xhr -> clear
@@ -16,23 +21,34 @@ class App extends React.Component {
       },
     });
 
-    this.setState({ videoList: response.data.items });
+    this.setState({
+      videoList: response.data.items,
+      selectedVideo: response.data.items[0] //defaulting the first search term video to display.
+    });
   };
 
   onVideoSelect = (video) => {
     //callback
-    this.setState({selectedVideo: video});
+    this.setState({ selectedVideo: video });
   };
 
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmitHandler={this.onSearchSubmit} />
-        <VideoDetail video={this.state.selectedVideo}/>
-        <VideoList
-          onVideoSelect={this.onVideoSelect}
-          videos={this.state.videoList}
-        />
+        <div className="ui grid sub-container">
+          <div className="ui row video-list">
+            <div className="eleven wide column">
+              <VideoDetail video={this.state.selectedVideo} />
+            </div>
+            <div className="five wide column">
+              <VideoList
+                onVideoSelect={this.onVideoSelect}
+                videos={this.state.videoList}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

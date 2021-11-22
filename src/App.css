@@ -1,0 +1,14 @@
+.sub-container.ui.grid{
+    /* border: 1px solid red; */
+    max-height: 500px !important;
+}
+
+.video-list.ui.row{
+    /* border: 1px solid blue; */
+    max-height: 500px;
+}
+
+.eleven.wide.column{
+    max-height: 500px !important;
+    border: 1px solid yellow;
+}
