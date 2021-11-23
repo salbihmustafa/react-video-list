@@ -5,13 +5,15 @@ div{
   -webkit-transition: all .5s linear; 
 }
 
-
+.sub-container.ui.grid .five.wide.column {
+    height: 500px;
+    overflow: auto;
+}
 
 @media screen and (max-width: 1024px){
     .sub-container.ui.grid{
         display: flex !important;
         flex-direction: column !important;
-        border: 1px solid red;
     }
     .ui.column.grid>[class*="eleven wide"].column, .ui.grid>.column.row>[class*="eleven wide"].column, .ui.grid>.row>[class*="eleven wide"].column, .ui.grid>[class*="eleven wide"].column {
         width: 100%;
@@ -21,5 +23,7 @@ div{
     }
     .sub-container.ui.grid .five.wide.column{
         width: 100% !important;
+        height: 100%;
+        overflow: hidden;
     }
 }
