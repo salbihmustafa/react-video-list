@@ -9,7 +9,7 @@ class App extends React.Component {
   state = { videoList: [], selectedVideo: null };
 
   componentDidMount() {
-    this.onSearchSubmit('ReactJS');
+    this.onSearchSubmit("ReactJS");
   }
 
   onSearchSubmit = async (searchTerm) => {
@@ -23,7 +23,7 @@ class App extends React.Component {
 
     this.setState({
       videoList: response.data.items,
-      selectedVideo: response.data.items[0] //defaulting the first search term video to display.
+      selectedVideo: response.data.items[0], //defaulting the first search term video to display.
     });
   };
 
@@ -37,16 +37,14 @@ class App extends React.Component {
       <div className="ui container">
         <SearchBar onFormSubmitHandler={this.onSearchSubmit} />
         <div className="ui grid sub-container">
-          <div className="ui row video-list">
-            <div className="eleven wide column">
-              <VideoDetail video={this.state.selectedVideo} />
-            </div>
-            <div className="five wide column">
-              <VideoList
-                onVideoSelect={this.onVideoSelect}
-                videos={this.state.videoList}
-              />
-            </div>
+          <div className="eleven wide column">
+            <VideoDetail video={this.state.selectedVideo} />
+          </div>
+          <div className="five wide column">
+            <VideoList
+              onVideoSelect={this.onVideoSelect}
+              videos={this.state.videoList}
+            />
           </div>
         </div>
       </div>
