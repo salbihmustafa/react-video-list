@@ -6,7 +6,7 @@ const useVideos = (defaultSearchTerm) => {
 
   useEffect(() => {
     search(defaultSearchTerm);
-  }, []);
+  }, [defaultSearchTerm]);
 
   const search = async (searchTerm) => {
     //to check if calls are working, inspect -> network -> fetch/xhr -> clear
