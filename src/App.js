@@ -26,11 +26,6 @@ const App = () => {
     setSelectedVideo(response.data.items[0]); //defaulting the first search term video to display.
   };
 
-  const onVideoSelect = (video) => {
-    //callback
-    setSelectedVideo(video);
-  };
-
   return (
     <div className="ui container">
       <SearchBar onFormSubmitHandler={onSearchSubmit} />
@@ -39,7 +34,7 @@ const App = () => {
           <VideoDetail video={selectedVideo} />
         </div>
         <div className="five wide column">
-          <VideoList onVideoSelect={onVideoSelect} videos={videoList} />
+          <VideoList onVideoSelect={setSelectedVideo} videos={videoList} />
         </div>
       </div>
     </div>
